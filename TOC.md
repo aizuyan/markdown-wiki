@@ -1,8 +1,0 @@
-- 产品相关
-  - [产品架构](pm/architecture.md)
-  - [产品计划](pm/plan.md)
-- 通用规范
-  - [域名规范](common/domain.md)
-  - [PHP](common/php.md)
-  - [接口开发规范](common/interface.md)
-  - [研发工作流程](common/workflow.md)
