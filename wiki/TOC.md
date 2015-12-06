@@ -1,0 +1,3 @@
+- markdown
+  - [如何使用](helpers/hotouse.md)
+  - [安装](helpers/installed.md)

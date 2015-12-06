@@ -18,7 +18,7 @@ $Parsedown = new Parsedown();
 
 //get include file
 
-$left = $Parsedown->text(file_get_contents(ROOT_PATH."TOC.md"));
+$left = $Parsedown->text(file_get_contents(ROOT_PATH."wiki/TOC.md"));
 $left = preg_replace("/href=\"(.*?)\"/", "href=\"".ROOT_URL."wiki/$1\"", $left);
 $left = '<div id="nav" class="float-left left">'.$left."</div>";
 $center = $Parsedown->text(file_get_contents($file));
