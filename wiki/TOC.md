@@ -1,3 +1,4 @@
 - markdown
+  - [为什么使用这个](helpers/whyuse.md)
   - [如何使用](helpers/hotouse.md)
   - [安装](helpers/installed.md)

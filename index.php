@@ -12,6 +12,16 @@ if(!is_file($file)){
 	//404;
 	echo "not found file!!";
 }
+$dependences = [
+    $uri,
+    ROOT_PATH."wiki/TOC.md",
+    $file
+];
+$cacheFile = isNotChange($dependences);
+if($cacheFile){
+   echo include "$cacheFile";
+   exit;
+}
 
 include_once("./Parsedown.php");
 $Parsedown = new Parsedown();
@@ -40,4 +50,23 @@ $right .= "</ul></div>";
 
 $template_bodys = $left.$center.$right;
 
+ob_start();
 include "template/default.md";
+$cacheContent = ob_get_contents();
+ob_flush();
+file_put_contents(ROOT_PATH."storage/".str_replace("/", "-", $uri), $cacheContent);
+
+function isNotChange($args) {
+    $args = is_array($args) ? $args : func_get_args();
+    $cacheFileName = str_replace("/", "-", array_shift($args));
+    clearstatcache();
+    $cacheFilePath = ROOT_PATH."storage/{$cacheFileName}";
+    if(!is_file($cacheFilePath)) {
+	return false;
+    }
+    $cacheChangeTime = filectime($cacheFilePath);
+    foreach($args as $dependence) {
+    	if(filectime($dependence) >= $cacheChangeTime) return false;
+    }
+    return $cacheFilePath;
+}
