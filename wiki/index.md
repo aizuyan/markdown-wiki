@@ -1,6 +1,7 @@
-# markdown-wiki
+#环境配置
 
-### nginx 配置
+## nginx配置
+nginx 配置主要有两个地方，一个是对要解析的md文件的重定向，另一个是对首页的重定向
 ```nginx
     server {
 	listen 80;
@@ -21,7 +22,7 @@
 	}
 	
 	location = / {
-	    rewrite / /wiki/helpers/hotouse.md;
+	    rewrite / /wiki/index.md;
 	}
 	
     }

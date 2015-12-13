@@ -19,7 +19,7 @@ $dependences = [
 ];
 $cacheFile = isNotChange($dependences);
 if($cacheFile){
-   echo include "$cacheFile";
+   include "$cacheFile";
    exit;
 }
 
